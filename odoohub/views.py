@@ -1,9 +1,17 @@
+import jwt
+import datetime
+from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import authenticate, logout
 from django.views.decorators.http import require_http_methods
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 # Create your views here.
+
+HEADERS = {
+    "type": "jwt",
+    "algorithms": "HS256"
+}
 
 
 def _get_response(message=None, data=None):
@@ -25,17 +33,33 @@ def user_login(request):
     """
     username = request.POST.get('username')
     password = request.POST.get('password')
-    user_obj = None
     user_data = {}
     if username and password:
-        user_obj = authenticate(username=username, password=password)
-    if user_obj and user_obj.is_active:
-        user_data = {
-            'id': user_obj.id,
-            'username': user_obj.username,
-            'password': password,
-        }
-        return _get_response(message='success', data=user_data)
+        if not request.META.get('HTTP_AUTHORIZATION', ''):
+            user_obj = authenticate(username=username, password=password)
+            if user_obj and user_obj.is_active:
+                payload = {
+                    'user_data': {
+                        'id': user_obj.id,
+                        'username': user_obj.username,
+                        'password': password,
+                    },
+                    'expire': (datetime.datetime.utcnow() + datetime.timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S"),
+                }
+                token = jwt.encode(payload, settings.SECRET_KEY, headers=HEADERS).encode('utf-8').decode()
+                return _get_response(message='success', data={'token': token})
+        else:
+            authorization = request.META.get('HTTP_AUTHORIZATION', '')
+            auth = authorization.split()
+            if not auth or len(auth) != 1:
+                pass
+            else:
+                token = auth[0]
+                payload = jwt.decode(token, settings.SECRET_KEY, algorithms='HS256')
+                # 刷新token失效日期
+                token = jwt.encode(payload, settings.SECRET_KEY, headers=HEADERS).encode('utf-8').decode()
+                return _get_response(message='success', data={'token': token})
+
     else:
         return _get_response(message='fail', data=user_data)
 
