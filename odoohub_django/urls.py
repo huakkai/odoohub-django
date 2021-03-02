@@ -18,9 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views import generic
 from material.frontend import urls as frontend_urls
+from odoohub import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', generic.RedirectView.as_view(url='/workflow/', permanent=False)),
     url(r'', include(frontend_urls)),
+
+    path('api/user/login', views.user_login),
+    path('api/user/change_password', views.change_password),
+    path('api/user/get_info', views.get_info),
+    path('api/user/logout', views.login_logout),
 ]
