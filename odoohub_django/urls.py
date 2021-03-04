@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^$', generic.RedirectView.as_view(url='/workflow/', permanent=False)),
     url(r'', include(frontend_urls)),
 
+    path('chat/', include('chat.urls')),
+
     path('api/user/login', views.user_login),
     path('api/user/change_password', views.change_password),
     path('api/user/get_info', views.get_info),
