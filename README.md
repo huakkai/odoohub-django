@@ -5,6 +5,7 @@
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/viewflow-index.jpg)
 
 ## PyJWT
+![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/pyjwt.jpg)
 
 ## channels
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/channels.jpg)
