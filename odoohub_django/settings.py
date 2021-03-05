@@ -123,6 +123,11 @@ USE_TZ = True
 
 SECRET_KEY = 'eLWgJ%Jz6W1DT2Bs'
 
+# viewflow
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
 # Channels
 ASGI_APPLICATION = 'odoohub_django.asgi.application'
 
