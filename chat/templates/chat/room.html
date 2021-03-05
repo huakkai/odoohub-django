@@ -5,9 +5,12 @@
     <title>Chat Room</title>
 </head>
 <body>
-<textarea id="chat-log" cols="100" rows="20"></textarea><br>
-<input id="chat-message-input" type="text" size="100"><br>
-<input id="chat-message-submit" type="button" value="Send">
+    <div style="text-align: center">
+        <h6 style="color: cornflowerblue">Welcome to {{ room_name }}</h6>
+        <textarea id="chat-log" cols="100" rows="20" style="width: 50%;"></textarea><br>
+            <input id="chat-message-input" type="text" size="100" style="width: 50%;height: 30px"><br>
+            <input id="chat-message-submit" type="button" value="Send">
+    </div>
 {{ room_name|json_script:"room-name" }}
 <script>
     const roomName = JSON.parse(document.getElementById('room-name').textContent);
