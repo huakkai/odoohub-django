@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'viewflow',
     'viewflow.frontend',
     'odoohub',
+    'split',
 ]
 
 MIDDLEWARE = [
