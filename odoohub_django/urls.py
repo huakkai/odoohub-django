@@ -20,14 +20,18 @@ from django.views import generic
 from material.frontend import urls as frontend_urls
 from odoohub import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     url(r'^$', generic.RedirectView.as_view(url='/workflow/', permanent=False)),
     url(r'', include(frontend_urls)),
 
     path('chat/', include('chat.urls')),
 
     path('split/', include('split.urls')),
+
+    path('rest/', include('restf.urls')),
 
     path('api/user/login', views.user_login),
     path('api/user/change_password', views.change_password),
