@@ -1,2 +1,2 @@
-from split.models.employee import Employee
-from split.models.department import Department
+from split.models import employee
+from split.models import department

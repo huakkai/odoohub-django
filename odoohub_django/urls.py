@@ -27,6 +27,8 @@ urlpatterns = [
 
     path('chat/', include('chat.urls')),
 
+    path('split/', include('split.urls')),
+
     path('api/user/login', views.user_login),
     path('api/user/change_password', views.change_password),
     path('api/user/get_info', views.get_info),
