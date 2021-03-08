@@ -1,19 +1,13 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from .serializers import UserSerializer, GroupSerializer
+from restf.models import Snippet
+from restf.serializers import SnippetSerializer
+from rest_framework import generics
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    允许用户查看或编辑的API路径。
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+class SnippetList(generics.ListCreateAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    允许组查看或编辑的API路径。
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
