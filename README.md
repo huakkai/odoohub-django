@@ -9,6 +9,7 @@
 
 ## channels
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/channels.jpg)
+![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/channels-fronted.jpg)
 
 ## restframework
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/restframework.jpg)
