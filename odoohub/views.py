@@ -35,30 +35,40 @@ def user_login(request):
     password = request.POST.get('password')
     user_data = {}
     if username and password:
-        if not request.META.get('HTTP_AUTHORIZATION', ''):
-            user_obj = authenticate(username=username, password=password)
-            if user_obj and user_obj.is_active:
-                payload = {
-                    'user_data': {
-                        'id': user_obj.id,
+
+        # normal
+        user_obj = authenticate(username=username, password=password)
+        if user_obj and user_obj.is_active:
+            return _get_response(message='success', data={
+                        'uid': user_obj.id,
                         'username': user_obj.username,
                         'password': password,
-                    },
-                    'expire': (datetime.datetime.utcnow() + datetime.timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S"),
-                }
-                token = jwt.encode(payload, settings.SECRET_KEY, headers=HEADERS).encode('utf-8').decode()
-                return _get_response(message='success', data={'token': token})
-        else:
-            authorization = request.META.get('HTTP_AUTHORIZATION', '')
-            auth = authorization.split()
-            if not auth or len(auth) != 1:
-                pass
-            else:
-                token = auth[0]
-                payload = jwt.decode(token, settings.SECRET_KEY, algorithms='HS256')
-                # 刷新token失效日期
-                token = jwt.encode(payload, settings.SECRET_KEY, headers=HEADERS).encode('utf-8').decode()
-                return _get_response(message='success', data={'token': token})
+                    })
+        # JWT
+        # if not request.META.get('HTTP_AUTHORIZATION', ''):
+        #     user_obj = authenticate(username=username, password=password)
+        #     if user_obj and user_obj.is_active:
+        #         payload = {
+        #             'user_data': {
+        #                 'id': user_obj.id,
+        #                 'username': user_obj.username,
+        #                 'password': password,
+        #             },
+        #             'expire': (datetime.datetime.utcnow() + datetime.timedelta(seconds=10)).strftime("%Y-%m-%d %H:%M:%S"),
+        #         }
+        #         token = jwt.encode(payload, settings.SECRET_KEY, headers=HEADERS).encode('utf-8').decode()
+        #         return _get_response(message='success', data={'token': token})
+        # else:
+        #     authorization = request.META.get('HTTP_AUTHORIZATION', '')
+        #     auth = authorization.split()
+        #     if not auth or len(auth) != 1:
+        #         pass
+        #     else:
+        #         token = auth[0]
+        #         payload = jwt.decode(token, settings.SECRET_KEY, algorithms='HS256')
+        #         # 刷新token失效日期
+        #         token = jwt.encode(payload, settings.SECRET_KEY, headers=HEADERS).encode('utf-8').decode()
+        #         return _get_response(message='success', data={'token': token})
 
     else:
         return _get_response(message='fail', data=user_data)
