@@ -33,4 +33,6 @@ urlpatterns = [
     path('rest/', include('restf.urls')),
 
     path('backend/', include('odoohub.urls')),
+
+    path('avatar/', include('avatar.urls')),
 ]

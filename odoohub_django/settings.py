@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'split',
     'rest_framework',
     'restf',
+    'avatar',
 ]
 
 MIDDLEWARE = [
@@ -155,6 +156,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
+
+# avatar
+MEDIA_ROOT = os.path.join(BASE_DIR, "", "media")
+MEDIA_URL = "/media/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
