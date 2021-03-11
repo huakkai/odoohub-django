@@ -31,22 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
-    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'material',
-    'material.frontend',
-    'viewflow',
-    'viewflow.frontend',
-    'odoohub',
-    'split',
-    'rest_framework',
-    'restf',
     'avatar',
 ]
 
@@ -126,36 +116,6 @@ USE_L10N = True
 USE_TZ = True
 
 SECRET_KEY = 'eLWgJ%Jz6W1DT2Bs'
-
-# viewflow
-LOGIN_URL = '/login/'
-
-LOGIN_REDIRECT_URL = '/'
-
-# Channels
-ASGI_APPLICATION = 'odoohub_django.asgi.application'
-
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
-
-# rest framework
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',  # 适用于添加身份验证和权限
-        # 'rest_framework.permissions.IsAdminUser',
-
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 10
-}
 
 # avatar
 MEDIA_ROOT = os.path.join(BASE_DIR, "", "media")
