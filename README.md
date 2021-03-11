@@ -13,3 +13,6 @@
 
 ## restframework
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/restframework.jpg)
+
+## Avatar
+![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/avatar.jpg)
