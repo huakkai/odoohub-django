@@ -53,3 +53,5 @@ class Poll(models.Model):
         self._change_reason = 'this is save (UPDATE)'
         super().save(*args, **kwargs)
 ```
+
+![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/history-db.jpg)
