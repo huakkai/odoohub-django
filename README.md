@@ -60,6 +60,9 @@ class Poll(models.Model):
 
 [官方文档](https://django-adminlte2.readthedocs.io/en/latest/index.html)
 ```python
+pip install django-adminlte2
+```
+```python
 INSTALLED_APPS = [
     # Any apps which will override adminlte's templates (i.e. your apps)
     ...
