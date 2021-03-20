@@ -50,6 +50,11 @@ INSTALLED_APPS = [
     'avatar',
     'simple_history',
     'history',
+    'adminlte',
+    # The general purpose templates
+    'django_adminlte',
+    # Optional: Skin for the admin interface
+    'django_adminlte_theme',
 ]
 
 MIDDLEWARE = [

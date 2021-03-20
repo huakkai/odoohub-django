@@ -35,4 +35,6 @@ urlpatterns = [
     path('backend/', include('odoohub.urls')),
 
     path('avatar/', include('avatar.urls')),
+
+    path('adminlte/', include('adminlte.urls')),
 ]

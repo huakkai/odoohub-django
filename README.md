@@ -55,3 +55,33 @@ class Poll(models.Model):
 ```
 
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/history-db.jpg)
+
+## Django AdminLTE2 👍
+
+[官方文档](https://django-adminlte2.readthedocs.io/en/latest/index.html)
+```python
+INSTALLED_APPS = [
+    # Any apps which will override adminlte's templates (i.e. your apps)
+    ...
+
+    # The general purpose templates
+    'django_adminlte',
+
+    # Optional: Skin for the admin interface
+    'django_adminlte_theme',
+
+    # Any apps which need to have their templates overridden by adminlte
+    'django.contrib.admin',
+    ...
+]
+```
+```html
+{% extends 'adminlte/base.html' %}
+
+{% block title %}{{ site }}{% endblock %}
+{% block content %}
+    Just some example content - {{ site }}
+    <div>{{ docs }}</div>
+{% endblock %}
+```
+![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/adminlte.png)
