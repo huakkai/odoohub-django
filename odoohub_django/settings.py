@@ -51,10 +51,17 @@ INSTALLED_APPS = [
     'simple_history',
     'history',
     'adminlte',
-    # The general purpose templates
-    'django_adminlte',
-    # Optional: Skin for the admin interface
-    'django_adminlte_theme',
+    # # The general purpose templates
+    # 'django_adminlte',
+    # # Optional: Skin for the admin interface
+    # 'django_adminlte_theme',
+    # # General use templates & template tags (should appear first)
+    'adminlte3',
+    # Optional: Django admin theme (must be before django.contrib.admin)
+    'adminlte3_theme',
+    'crispy_forms',
+    'adminlte_full',
+    'myadminlte3',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'adminlte_full.context_processors.adminlte',
             ],
         },
     },
@@ -173,3 +181,5 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

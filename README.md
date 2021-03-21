@@ -88,3 +88,29 @@ INSTALLED_APPS = [
 {% endblock %}
 ```
 ![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/adminlte.png)
+
+## Django AdminLTE3
+[官方文档](https://pypi.org/project/django-adminlte-3/)
+```python
+pip install django-adminlte3
+```
+```python
+INSTALLED_APPS = [
+     # General use templates & template tags (should appear first)
+    'adminlte3',
+     # Optional: Django admin theme (must be before django.contrib.admin)
+    'adminlte3_theme',
+    ...
+]
+```
+```html
+// 同AdminLTE2的用法
+{% extends 'adminlte/base.html' %}
+
+{% block title %}{{ site }}{% endblock %}
+{% block content %}
+    Just some example content - {{ site }}
+    <div>{{ docs }}</div>
+{% endblock %}
+```
+![Image text](https://github.com/huakkai/odoohub-django/blob/master/git-img/adminlte3.png)

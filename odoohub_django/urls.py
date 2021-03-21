@@ -37,4 +37,6 @@ urlpatterns = [
     path('avatar/', include('avatar.urls')),
 
     path('adminlte/', include('adminlte.urls')),
+
+    path('adminlte3/', include('myadminlte3.urls')),
 ]
